@@ -5,21 +5,24 @@
     <title>Cat Clicker</title>
 </head>
 <body>
-    <ul id="cat-list"></ul>
+    <ul data-bind="foreach: catList">
+        <li data-bind="text: $data.name, click: $parent.changeCurrentCat"></li>
+        <!-- <li data-bind="text: $data.name"></li> -->
+
+    </ul>
     <div data-bind="with:currentCat">
 
         <h2 data-bind="text: name"></h2>
-        <div data-bind="text: level"></div>
+        <h3 data-bind="text: level"></h3>
         <div data-bind="text: clickCount"></div>
-        <img src="" alt="cute cat" data-bind="click:$parent.incrementCounter,attr:{src:imgSrc}">
-        <h2 data-bind="text: nameList"></h2> 
-        <ul data-bind="foreach:nickNames">
-            <li>
-                <span data-bind="text:name"></span>
-            </li>
-        </ul>
+        <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
+    <ul data-bind="foreach: nickNames">
+        <li data-bind="text: $data"></li>
+    </ul>
     </div>
-    <script src="js/lib/knockout-3.2.0.js"></script>
+    <!-- 包含框架 -->
+    <script src="js/lib/knockout-3.4.2.js"></script>
+    <!-- 自己写的js -->
     <script src="js/app.js"></script>
 </body>
 </html>
